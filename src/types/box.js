@@ -94,12 +94,14 @@ module.exports = function(Chart) {
 			model.backgroundColor = options.backgroundColor;
 		},
 		inRange: function(mouseX, mouseY) {
-			var model = this._model;
-			return model &&
-				mouseX >= model.left &&
-				mouseX <= model.right &&
-				mouseY >= model.top &&
-				mouseY <= model.bottom;
+			if(this.options.label && this.options.label.enabled) {
+				var model = this._model;
+				return model &&
+					mouseX >= model.left &&
+					mouseX <= model.right &&
+					mouseY >= model.top &&
+					mouseY <= model.bottom;
+			}
 		},
 		getCenterPoint: function() {
 			var model = this._model;
